@@ -1,0 +1,13 @@
+# Python-generated files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+*.cache
+
+# Virtual environments
+venv/
+env/
