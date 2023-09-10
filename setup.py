@@ -18,7 +18,7 @@ setup(
   author_email='duleasoft@gmail.com',
   license='MIT', 
   classifiers=classifiers,
-  keywords='calculator', 
+  keywords='api', 
   packages=find_packages(),
   install_requires=[''] 
 )
