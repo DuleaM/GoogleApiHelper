@@ -1,4 +1,6 @@
-from SheetsManagement import GoogleSheets
+from Credentials import Account
 
 if __name__ == '__main__':
-    sheets = GoogleSheets()
+    account = Account()
+    creds = account.getAuthToken()
+    print(creds)
