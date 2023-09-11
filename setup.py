@@ -1,9 +1,11 @@
 from setuptools import setup, find_packages
  
 classifiers = [
-  'Development Status :: Unstable',
+  'Development Status :: Inactive',
   'Intended Audience :: Developers',
-  'Operating System :: Microsoft :: Windows :: Windows 10',
+  'Operating System :: Microsoft :: Windows',
+  'Operating System :: POSIX :: Linux',
+  'Operating System :: MacOS',
   'License :: MIT License',
   'Programming Language :: Python :: 3'
 ]
@@ -20,5 +22,9 @@ setup(
   classifiers=classifiers,
   keywords='api', 
   packages=find_packages(),
-  install_requires=[''] 
+  install_requires=[
+    'google-api-python-client',
+    'google-auth-httplib2',
+    'google-auth-oauthlib'
+  ] 
 )
