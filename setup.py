@@ -1,12 +1,12 @@
 from setuptools import setup, find_packages
  
 classifiers = [
-  'Development Status :: Inactive',
+  'Development Status :: 7 - Inactive',
   'Intended Audience :: Developers',
   'Operating System :: Microsoft :: Windows',
   'Operating System :: POSIX :: Linux',
   'Operating System :: MacOS',
-  'License :: MIT License',
+  'License :: OSI Approved :: MIT License',
   'Programming Language :: Python :: 3'
 ]
  
