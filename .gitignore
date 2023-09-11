@@ -7,7 +7,10 @@ __pycache__/
 *.sqlite3
 *.log
 *.cache
+*json
 
 # Virtual environments
 venv/
 env/
+dist/
+GoogleApiHelper.egg-info/
