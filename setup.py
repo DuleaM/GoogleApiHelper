@@ -13,7 +13,7 @@ classifiers = [
 setup(
   name='GoogleApiHelper',
   version='0.0.1',
-  description='A package with functionalities to help you develop faster code using google apis',
+  description='Work In progress! A package with functionalities to help you develop faster code using google apis',
   long_description=open('README.txt').read() + '\n\n' + open('CHANGELOG.txt').read(),
   url='',  
   author='Dulea Mihai-Alexandru',
