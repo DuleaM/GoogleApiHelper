@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
  
 classifiers = [
-  'Development Status :: 7 - Inactive',
+  'Development Status :: 1 - Planning',
   'Intended Audience :: Developers',
   'Operating System :: Microsoft :: Windows',
   'Operating System :: POSIX :: Linux',
@@ -20,7 +20,7 @@ setup(
   author_email='duleasoft@gmail.com',
   license='MIT', 
   classifiers=classifiers,
-  keywords='api', 
+  keywords='api, google, google-sheets, google-drive', 
   packages=find_packages(),
   install_requires=[
     'google-api-python-client',
