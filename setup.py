@@ -11,7 +11,7 @@ classifiers = [
 ]
  
 setup(
-  name='GoogleApiHelper',
+  name='google-api-services-helper',
   version='0.0.1',
   description='Work In progress! A package with functionalities to help you develop faster code using google apis',
   long_description=open('README.txt').read() + '\n\n' + open('CHANGELOG.txt').read(),
