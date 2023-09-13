@@ -18,7 +18,7 @@ class Account():
             'https://www.googleapis.com/auth/gmail.metadata',
             'https://www.googleapis.com/auth/gmail.compose'
         ]
-
+        
 
     def getAuthToken(self):
         creds = None
