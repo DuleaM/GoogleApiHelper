@@ -8,6 +8,18 @@ class GoogleDrive():
         self.service = build('drive', 'v3', credentials=self.creds)
     
     def uploadFile(self, file_path, file_mimetype=None):
+        """Uploads a file to google drive
+
+        Args:
+            file_path (str): The path of the file (must be raw)
+            file_mimetype (str, optional): If mentioned, it uploads based on the specified mimetype. 
+                                           If not, it will try to guess it based on extension.
+                                           Defaults to None.
+
+        Returns:
+            _type_: Id of the file uploaded to drive
+        """
+        
         file_name = os.path.basename(file_path)
         
         if file_mimetype == None:
@@ -34,5 +46,5 @@ if __name__ == '__main__':
     creds = Account().getAuthToken()
     
     drive = GoogleDrive(creds)
-drive.uploadFile(r'C:\Users\dulea\OneDrive\Desktop\GoogleAPI.txt')
+    drive.uploadFile(r'C:\Users\dulea\OneDrive\Desktop\GoogleAPI.txt')
     
