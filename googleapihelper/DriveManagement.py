@@ -1,8 +1,5 @@
-from __future__ import print_function
-
-import google.auth, os
+import os, mimetypes
 from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaFileUpload
 
 class GoogleDrive():
@@ -12,10 +9,11 @@ class GoogleDrive():
     
     def uploadFile(self, file_path):
         file_name = os.path.basename(file_path)
+        file_mimetype = mimetypes.guess_type(file_name)
         file_metadata = {'name': file_name}
         
         try:
-            media = MediaFileUpload(file_path, mimetype='image/png')
+            media = MediaFileUpload(file_path, mimetype=file_mimetype)
         except Exception as e:
             print("Couldn't find the file. Error " + e)
             return None
