@@ -1,13 +1,14 @@
-import os, mimetypes
+import os, io, mimetypes
 from googleapiclient.discovery import build
-from googleapiclient.http import MediaFileUpload
+from googleapiclient.errors import HttpError
+from googleapiclient.http import MediaFileUpload, MediaIoBaseDownload
 
 class GoogleDrive():
     def __init__(self, creds):
         self.creds = creds
         self.service = build('drive', 'v3', credentials=self.creds)
     
-    def uploadFile(self, file_path, file_mimetype=None):
+    def upload_file(self, file_path, file_mimetype=None):
         """Uploads a file to google drive
 
         Args:
@@ -29,8 +30,8 @@ class GoogleDrive():
         
         try:
             media = MediaFileUpload(file_path, mimetype=file_mimetype)
-        except Exception as e:
-            print("Couldn't find the file. Error ", e)
+        except Exception as error:
+            print(F'An error occurred: {error}')
             return None
         
         file = self.service.files().create(
@@ -41,10 +42,29 @@ class GoogleDrive():
         
         return file.get("id")
 
+    def download_file(self, file_id):
+    
+        try:
+            request = self.service.files().get_media(
+                fileId=file_id
+            )
+            
+            file = io.BytesIO()
+            downloader = MediaIoBaseDownload(file, request)
+            done = False
+            while done is False:
+                status, done = downloader.next_chunk()
+                print(F'Download {int(status.progress() * 100)}.')
+
+        except HttpError as error:
+            print(F'An error occurred: {error}')
+            return None
+
+        return file.getvalue()
+    
 if __name__ == '__main__':
     from Credentials import Account
     creds = Account().getAuthToken()
     
     drive = GoogleDrive(creds)
-    drive.uploadFile(r'C:\Users\dulea\OneDrive\Desktop\GoogleAPI.txt')
-    
+    drive.download_file()    
