@@ -7,15 +7,18 @@ class GoogleDrive():
         self.creds = creds
         self.service = build('drive', 'v3', credentials=self.creds)
     
-    def uploadFile(self, file_path):
+    def uploadFile(self, file_path, file_mimetype=None):
         file_name = os.path.basename(file_path)
-        file_mimetype = mimetypes.guess_type(file_name)
+        
+        if file_mimetype == None:
+            file_mimetype = mimetypes.guess_type(file_name)[0]
+
         file_metadata = {'name': file_name}
         
         try:
             media = MediaFileUpload(file_path, mimetype=file_mimetype)
         except Exception as e:
-            print("Couldn't find the file. Error " + e)
+            print("Couldn't find the file. Error ", e)
             return None
         
         file = self.service.files().create(
@@ -31,5 +34,5 @@ if __name__ == '__main__':
     creds = Account().getAuthToken()
     
     drive = GoogleDrive(creds)
-    drive.uploadFile(r'C:\Users\dulea\OneDrive\Desktop\marcel ciolacu.png')
+drive.uploadFile(r'C:\Users\dulea\OneDrive\Desktop\GoogleAPI.txt')
     
